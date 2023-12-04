@@ -12,23 +12,29 @@ This project is divided into 7 steps:
 	- creating a simple flow of serialization/deserialization: Instance <-> Dictionary <-> JSON string <-> file
 	- creating all classes used for the project : 'User', 'State', 'City', 'Place' ... that inherit from 'BaseModel'.
 	- Creating the first abstracted storage engine of the project: File storage.
+
 	After this step, we should have a command interpreter that manages the objects of our project:
 	- Create a new object (ex: a new User or a new Place)
 	- Retrieve an object from a file, a database etc…
 	- Do operations on objects (count, compute stats, etc…)
 	- Update attributes of an object
 	- Destroy an object
-1. Web Static :
-	updates are comming... 
-2. MySQL Storage :
+1. Web Static:
 	updates are comming...
-3. Deploy Static :
+
+2. MySQL Storage:
 	updates are comming...
-4. Web Framework :
+
+3. Deploy Static:
 	updates are comming...
-5. RESTful API :
+
+4. Web Framework:
 	updates are comming...
-6. Web Dynamic :
+
+5. RESTful API:
+	updates are comming...
+
+6. Web Dynamic:
 	updates are comming...
 
 ## Usage
