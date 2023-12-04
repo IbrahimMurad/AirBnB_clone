@@ -42,10 +42,10 @@ To be updated...
 
 ## File Structure
 This repository contains (other than README.md file and AUTHOR file),
-- 'model/' directory: it contains all classes used for the entire project.
-- 'tests/' directory : it contains all unit tests.
-- 'console.py' file : it is the entry point of our command interpreter.
-- 'models/base_model.py' file : it is the base class of all our models. It contains common elements:
-	- attributes: 'id', 'created_at' and 'updated_at'
-	- methods: 'save()' and 'to_json()'
-- 'models/engine' directory : it contains all storage classes (using the same prototype).
+- `model/` directory: it contains all classes used for the entire project.
+- `tests/` directory : it contains all unit tests.
+- `console.py` file : it is the entry point of our command interpreter.
+- `models/base_model.py` file : it is the base class of all our models. It contains common elements:
+	- attributes: `id`, `created_at` and `updated_at`
+	- methods: `save()` and `to_json()`
+- `models/engine` directory : it contains all storage classes (using the same prototype).
