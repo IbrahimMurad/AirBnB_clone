@@ -5,18 +5,19 @@ This project is the first full web application in the ALX-SE journey of a web de
 
 ## Features
 This project is divided into 7 steps:
-	0. The Console
-		This is the first step in this big project. It focuses on:
-			- Creating the parent class 'BaseModel' which takes care of the initialization, serialization and deserialization of the instances.
-			- creating a simple flow of serialization/deserialization: Instance <-> Dictionary <-> JSON string <-> file
-			- creating all classes used for the project : 'User', 'State', 'City', 'Place' ... that inherit from 'BaseModel'.
-			- Creating the first abstracted storage engine of the project: File storage.
-		After this step, we should have a command interpreter that manages the objects of our project:
-			- Create a new object (ex: a new User or a new Place)
-			- Retrieve an object from a file, a database etc…
-			- Do operations on objects (count, compute stats, etc…)
-			- Update attributes of an object
-			- Destroy an object
+
+0. The Console
+	This is the first step in this big project. It focuses on:
+	- Creating the parent class 'BaseModel' which takes care of the initialization, serialization and deserialization of the instances.
+	- creating a simple flow of serialization/deserialization: Instance <-> Dictionary <-> JSON string <-> file
+	- creating all classes used for the project : 'User', 'State', 'City', 'Place' ... that inherit from 'BaseModel'.
+	- Creating the first abstracted storage engine of the project: File storage.
+	After this step, we should have a command interpreter that manages the objects of our project:
+	- Create a new object (ex: a new User or a new Place)
+	- Retrieve an object from a file, a database etc…
+	- Do operations on objects (count, compute stats, etc…)
+	- Update attributes of an object
+	- Destroy an object
 	1. Web Static
 		updates are comming... 
 	2. MySQL Storage
