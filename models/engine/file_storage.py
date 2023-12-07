@@ -28,7 +28,11 @@ class FileStorage:
         """
 
         from models.base_model import BaseModel
-        my_classes = {'BaseModel': BaseModel}
+        from models.user import User
+        my_classes = {
+            'BaseModel': BaseModel,
+            'User': User
+            }
         return my_classes
 
     def __init__(self):
