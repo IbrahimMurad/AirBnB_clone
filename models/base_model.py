@@ -1,5 +1,6 @@
 from uuid import uuid4
 from datetime import datetime
+from models import storage
 
 """
 Module : base_model.py
@@ -34,22 +35,28 @@ class BaseModel:
         Initialize BaseModel attributes, id, created_at and updated_at
         """
 
-        if not len(kwargs) == 0:
+        if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == '__class__':
-                    pass
+                    continue
                 elif key == 'created_at':
                     self.created_at = datetime.fromisoformat(value)
                 elif key == 'updated_at':
                     self.updated_at = datetime.fromisoformat(value)
                 else:
                     setattr(self, key, value)
-        if 'id' not in kwargs.keys():
-            self.id = uuid4()
-        if 'created_at' not in kwargs.keys():
+            # if some main attributes are not included in kwargs
+            if 'id' not in kwargs.keys():
+                self.id = str(uuid4())
+            if 'created_at' not in kwargs.keys():
+                self.created_at = datetime.now()
+            if 'updated_at' not in kwargs.keys():
+                self.updated_at = datetime.now()
+        else:
+            self.id = str(uuid4())
             self.created_at = datetime.now()
-        if 'updated_at' not in kwargs.keys():
             self.updated_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         """
@@ -71,6 +78,7 @@ class BaseModel:
         """
 
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
@@ -83,8 +91,13 @@ class BaseModel:
             a dictionary representation of the class
         """
 
-        my_dict = self.__dict__
+        my_dict = {}
+        for key, value in self.__dict__.items():
+            if key == 'created_at':
+                my_dict['created_at'] = self.created_at.isoformat()
+            elif key == 'updated_at':
+                my_dict['updated_at'] = self.updated_at.isoformat()
+            else:
+                my_dict[key] = value
         my_dict['__class__'] = self.__class__.__name__
-        my_dict['created_at'] = self.created_at.isoformat()
-        my_dict['updated_at'] = self.updated_at.isoformat()
         return my_dict
