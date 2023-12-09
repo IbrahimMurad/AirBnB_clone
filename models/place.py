@@ -9,7 +9,7 @@ Classes :
 """
 
 
-class State(BaseModel):
+class Place(BaseModel):
     """
     a class to store a place informations
 

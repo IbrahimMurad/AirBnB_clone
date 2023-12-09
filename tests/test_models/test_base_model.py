@@ -42,6 +42,25 @@ class TestBaseModel(unittest.TestCase):
         myBaseModel = BaseModel()
         self.assertIsInstance(myBaseModel, BaseModel)
 
+
+    def test_BaseModel_attr(self):
+        """ checks if BaseModel has its attributes """
+
+        my_model = BaseModel()
+        self.assertTrue(hasattr(my_model, "id"))
+        self.assertTrue(hasattr(my_model, "created_at"))
+        self.assertTrue(hasattr(my_model, "updated_at"))
+
+
+    def test_BaseModel_extra_attr(self):
+        """ checks if BaseModel has the added attributes """
+
+        my_model = BaseModel()
+        my_model.name = 'Betty'
+        my_model.number = 129
+        self.assertTrue(hasattr(my_model, "name"))
+        self.assertTrue(hasattr(my_model, "number"))
+
     def test_instance_attr_type(self):
         """ checks the types of the puplic instance attributes """
 

@@ -9,7 +9,7 @@ Classes :
 """
 
 
-class State(BaseModel):
+class Review(BaseModel):
     """
     stores the review of a user to a place
 
