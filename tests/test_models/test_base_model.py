@@ -297,5 +297,24 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(my_model.created_at, new_model.created_at)
 
 
+    def test_todect_with_args(self):
+        """ passing one argument to to_dict (with self) """
+
+        my_model = BaseModel()
+        with self.assertRaises(TypeError) as excpt:
+            my_model.to_dict(15)
+        excpt_msg = "to_dict() takes 1 positional argument but 2 were given"
+        self.assertEqual(str(excpt.exception), excpt_msg)
+
+    def test_save_with_args(self):
+        """ passing 1 argument to save (with self) """
+
+        my_model = BaseModel()
+        with self.assertRaises(TypeError) as excpt:
+            my_model.save(15)
+        excpt_msg = "save() takes 1 positional argument but 2 were given"
+        self.assertEqual(str(excpt.exception), excpt_msg)
+
+
 if __name__ == '__main__':
     unittest.main()
