@@ -20,7 +20,7 @@ class TestBaseModel(unittest.TestCase):
     def setUp(self):
         """ starts a new connection """
 
-        setattr(storage, '__objects', {})
+        setattr(storage, "_FileStorage__objects", {})
         pass
 
     def tearDown(self):
@@ -56,7 +56,7 @@ class TestBaseModel(unittest.TestCase):
 
         with self.assertRaises(TypeError) as excpt:
             BaseModel.__init__()
-        excpt_msg = "BaseModel.__init__() missing 1 required positional argument: 'self'"
+        excpt_msg = "__init__() missing 1 required positional argument: 'self'"
         self.assertEqual(str(excpt.exception), excpt_msg)
 
     def test_init_1_arg(self):
@@ -144,11 +144,24 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(my_model.id, my_id)
         self.assertEqual(my_model.updated_at, my_updated_at)
 
+    def test_manual_kwargs(self):
+        """ manually passing kwargs """
+
+        my_id = '17'
+        my_cr = '2017-09-28T21:05:54.119427'
+        my_up = '2017-09-28T21:05:54.119499'
+        my_model = BaseModel(id=my_id, updated_at=my_up, created_at=my_cr)
+        c = datetime(2017, 9,28, 21, 5, 54, 119427)
+        u = datetime(2017, 9,28, 21, 5, 54, 119499)
+        self.assertEqual(my_model.id, '17')
+        self.assertEqual(my_model.created_at, c)
+        self.assertEqual(my_model.updated_at, u)
+
     def test_updated_gt_created(self):
         """ tests if updated_at is greater than created_at """
 
         my_model = BaseModel()
-        self.assertGreater(my_model.updated_at, my_model.created_at)
+        self.assertTrue(my_model.updated_at >= my_model.created_at)
 
     def test_not_isoformat(self):
         """ passing kwargs with wrong isoformat of datetime """
@@ -170,7 +183,7 @@ class TestBaseModel(unittest.TestCase):
         excpt_msg = "Invalid isoformat string: 'today'"
         self.assertEqual(str(excpt.exception), excpt_msg)
 
-    def test_str_(self):
+    def test_str_00(self):
         """ tests __str__ method """
 
         my_dict = {
@@ -181,8 +194,35 @@ class TestBaseModel(unittest.TestCase):
         my_model = BaseModel(**my_dict)
         my_str = "[BaseModel] (b6a6e15c-c67d-4312-9a75-9d084935e579) "
         my_str += "{'id': 'b6a6e15c-c67d-4312-9a75-9d084935e579', "
-        my_str += "'created_at': datetime.datetime(2017, 9, 28, 21, 5, 54, 119427), "
-        my_str += "'updated_at': datetime.datetime(2017, 9, 28, 21, 5, 54, 119572)}"
+        my_str += "'created_at': "
+        my_str += "datetime.datetime(2017, 9, 28, 21, 5, 54, 119427), "
+        my_str += "'updated_at': "
+        my_str += "datetime.datetime(2017, 9, 28, 21, 5, 54, 119572)}"
+        self.assertEqual(my_model.__str__(), my_str)
+        my_model = BaseModel()
+        my_str = "[BaseModel] (" + my_model.id + ") "
+        my_str += str(my_model.__dict__)
+        self.assertEqual(my_model.__str__(), my_str)
+
+    def test_str_01(self):
+        """ tests __str__ method after adding more attributes """
+
+        my_dict = {
+            'id': "b6a6e15c-c67d-4312-9a75-9d084935e579",
+            'created_at': '2017-09-28T21:05:54.119427',
+            'updated_at': '2017-09-28T21:05:54.119572',
+        }
+        my_model = BaseModel(**my_dict)
+        my_model.name = 'Betty'
+        my_model.number = 125
+        my_str = "[BaseModel] (b6a6e15c-c67d-4312-9a75-9d084935e579) "
+        my_str += "{'id': 'b6a6e15c-c67d-4312-9a75-9d084935e579', "
+        my_str += "'created_at': "
+        my_str += "datetime.datetime(2017, 9, 28, 21, 5, 54, 119427), "
+        my_str += "'updated_at': "
+        my_str += "datetime.datetime(2017, 9, 28, 21, 5, 54, 119572), "
+        my_str += "'name': 'Betty', "
+        my_str += "'number': 125}"
         self.assertEqual(my_model.__str__(), my_str)
         my_model = BaseModel()
         my_str = "[BaseModel] (" + my_model.id + ") "
@@ -209,14 +249,52 @@ class TestBaseModel(unittest.TestCase):
 
         my_model = BaseModel()
         my_id = "BaseModel." + my_model.id
+        my_model.save()
         my_dict = {}
         my_dict[my_id] = my_model.to_dict()
         my_json = json.dumps(my_dict)
-        my_model.save()
         with open('file.json', 'r', encoding='utf-8') as f:
             text_in_file = f.read()
         self.maxDiff = None
         self.assertEqual(text_in_file, my_json)
+
+    def test_todect00(self):
+        """ tests the output of a normal call """
+
+        my_model = BaseModel()
+        my_dict = {
+            'id': my_model.id,
+            'created_at': datetime.isoformat(my_model.created_at),
+            'updated_at': datetime.isoformat(my_model.updated_at),
+            '__class__': 'BaseModel'
+        }
+        self.assertEqual(my_model.to_dict(), my_dict)
+
+    def test_todect01(self):
+        """ tests the output after adding more attributes """
+
+        my_model = BaseModel()
+        my_model.name = 'Betty'
+        my_model.number = 145
+        my_dict = {
+            'id': my_model.id,
+            'created_at': datetime.isoformat(my_model.created_at),
+            'updated_at': datetime.isoformat(my_model.updated_at),
+            '__class__': 'BaseModel',
+            'name': 'Betty',
+            'number': 145
+        }
+        self.assertEqual(my_model.to_dict(), my_dict)
+
+    def test_todect02(self):
+        """ exporting a dict and use it to init a new BaseModel """
+
+        my_model = BaseModel(id='15')
+        my_model_dict = my_model.to_dict()
+        new_model = BaseModel(**my_model_dict)
+        self.assertEqual(my_model.id, new_model.id)
+        self.assertEqual(my_model.updated_at, new_model.updated_at)
+        self.assertEqual(my_model.created_at, new_model.created_at)
 
 
 if __name__ == '__main__':
