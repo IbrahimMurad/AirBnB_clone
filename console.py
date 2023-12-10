@@ -8,6 +8,7 @@ import cmd
 import sys
 from models import storage
 
+
 class HBNBCommand(cmd.Cmd):
     """
     This class works as a console to work as an interpreter
@@ -24,12 +25,12 @@ class HBNBCommand(cmd.Cmd):
             self.prompt = ""
         else:
             self.prompt = "(hbnb) "
-    
+
     def emptyline(self):
         """do nothing when an empty line is exuted"""
 
         pass
-    
+
     def do_EOF(self, line):
         """EOF command to exit the program
         """
@@ -45,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, line):
         """Creates a new instance of the named class,
         saves it (to the JSON file) and prints the id
-        
+
         Usage:
             create [class_name]
         """
@@ -73,7 +74,7 @@ Usage :
         if len(my_args) == 0:
             print("** class name missing **")
         elif my_args[0] not in storage.all_classes().keys():
-                print("** class doesn't exist **")
+            print("** class doesn't exist **")
         elif len(my_args) == 1:
             print("** instance id missing **")
         else:
@@ -100,7 +101,7 @@ Usage :
         if len(my_args) == 0:
             print("** class name missing **")
         elif my_args[0] not in storage.all_classes().keys():
-                print("** class doesn't exist **")
+            print("** class doesn't exist **")
         elif len(my_args) == 1:
             print("** instance id missing **")
         else:
@@ -118,8 +119,6 @@ Usage :
                 storage.save()
             else:
                 print("** no instance found **")
-
-
 
     def do_all(self, line):
         """Prints all string representation of all instances/
@@ -144,7 +143,7 @@ Usage :
                         my_obj_list.append(obj)
                 to_print_list = [str(obj) for obj in my_obj_list]
                 print(to_print_list)
-                
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
