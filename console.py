@@ -44,12 +44,11 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, line):
-        """Creates a new instance of the named class,
-        saves it (to the JSON file) and prints the id
-
-        Usage:
-            create [class_name]
-        """
+        """Creates a new instance of the named class, \
+saves it (to the JSON file) and prints the id
+Usage:
+    create [class_name]
+"""
 
         my_args = line.split()
         if len(my_args) == 0:
@@ -65,9 +64,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """Prints the string representation of an instance \
-    based on the class name and id
-    Usage :
-        show [class_name] [id]
+based on the class name and id
+Usage :
+    show [class_name] [id]
     """
 
         my_args = line.split()
@@ -93,9 +92,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id
-        Usage :
-            destroy [class_name] [id]
-        """
+    Usage :
+        destroy [class_name] [id]
+"""
 
         my_args = line.split()
         if len(my_args) == 0:
@@ -121,9 +120,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, line):
-        """Prints all string representation of all instances/
+        """Prints all string representation of all instances\
  based or not on the class name
- Usage:
+Usage:
     all [[class_name]]
  """
 
