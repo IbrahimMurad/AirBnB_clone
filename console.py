@@ -64,32 +64,32 @@ class HBNBCommand(cmd.Cmd):
                 print(new_obj.id)
 
     def do_show(self, line):
-            """Prints the string representation of an instance \
+        """Prints the string representation of an instance \
     based on the class name and id
     Usage :
         show [class_name] [id]
     """
 
-            my_args = line.split()
-            if len(my_args) == 0:
-                print("** class name missing **")
-            elif my_args[0] not in storage.all_classes().keys():
-                print("** class doesn't exist **")
-            elif len(my_args) == 1:
-                print("** instance id missing **")
+        my_args = line.split()
+        if len(my_args) == 0:
+            print("** class name missing **")
+        elif my_args[0] not in storage.all_classes().keys():
+            print("** class doesn't exist **")
+        elif len(my_args) == 1:
+            print("** instance id missing **")
+        else:
+            all_objects_list = list(storage.all().values())
+            my_obj_list = []
+            for obj in all_objects_list:
+                if obj.__class__.__name__ == my_args[0]:
+                    my_obj_list.append(obj)
+            list_of_ids = []
+            for obj in my_obj_list:
+                list_of_ids.append(obj.id)
+            if my_args[1] in list_of_ids:
+                print(my_obj_list[list_of_ids.index(my_args[1])])
             else:
-                all_objects_list = list(storage.all().values())
-                my_obj_list = []
-                for obj in all_objects_list:
-                    if obj.__class__.__name__ == my_args[0]:
-                        my_obj_list.append(obj)
-                list_of_ids = []
-                for obj in my_obj_list:
-                    list_of_ids.append(obj.id)
-                if my_args[1] in list_of_ids:
-                    print(my_obj_list[list_of_ids.index(my_args[1])])
-                else:
-                    print("** no instance found **")
+                print("** no instance found **")
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id
@@ -175,6 +175,7 @@ Usage :
                     attr_type = type(getattr(my_obj, my_args[2]))
                     setattr(my_obj, my_args[2], attr_type(my_args[3]))
                 storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
