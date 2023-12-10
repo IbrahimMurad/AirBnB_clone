@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This module defines City class to store a city informations
 

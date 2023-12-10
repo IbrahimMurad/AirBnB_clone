@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This module defines State class to store a state informations
 

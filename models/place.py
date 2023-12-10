@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This module defines Place class to store the informations
 related to a place

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This module defines User class to store a user informations
 

@@ -1,5 +1,5 @@
-"""
-This module defines Amenity class to store an amenity informations
+#!/usr/bin/python3
+""" This module defines Amenity class to store an amenity informations
 
 Classes :
     Amenity : inherits from BaseModel
