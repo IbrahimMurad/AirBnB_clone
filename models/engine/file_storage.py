@@ -1,4 +1,3 @@
-import json
 
 """
 Module : models.engine.file_storage.py
@@ -10,6 +9,8 @@ Classes :
     FileStorage : a class that serializes instances to a JSON file
     and deserializes JSON file to instances.
 """
+
+import json
 
 
 class FileStorage:

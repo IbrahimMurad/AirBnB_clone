@@ -1,4 +1,3 @@
-from models.base_model import BaseModel
 """
 This module defines City class to store a city informations
 
@@ -6,6 +5,8 @@ Classes :
     City : inherits from BaseModel
     to store more information related to a city
 """
+
+from models.base_model import BaseModel
 
 
 class City(BaseModel):

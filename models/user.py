@@ -1,4 +1,3 @@
-from models.base_model import BaseModel
 """
 This module defines User class to store a user informations
 
@@ -6,6 +5,8 @@ Classes :
     User : inherits from BaseModel
     to store more information related to a user
 """
+
+from models.base_model import BaseModel
 
 
 class User(BaseModel):

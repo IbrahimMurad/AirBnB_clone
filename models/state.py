@@ -1,4 +1,3 @@
-from models.base_model import BaseModel
 """
 This module defines State class to store a state informations
 
@@ -6,6 +5,8 @@ Classes :
     State : inherits from BaseModel
     to store more information related to a state
 """
+
+from models.base_model import BaseModel
 
 
 class State(BaseModel):

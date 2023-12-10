@@ -1,4 +1,3 @@
-from models.base_model import BaseModel
 """
 This module defines Review class to store
 a review of a user to a place
@@ -7,6 +6,8 @@ Classes :
     Review : inherits from BaseModel
     to store the review of a user to a place
 """
+
+from models.base_model import BaseModel
 
 
 class Review(BaseModel):

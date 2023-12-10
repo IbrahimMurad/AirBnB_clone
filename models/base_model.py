@@ -1,6 +1,3 @@
-from uuid import uuid4
-from datetime import datetime
-from models import storage
 
 """
 Module : base_model.py
@@ -12,6 +9,10 @@ Classes :
     BaseModel : A class that defines id, created_at and updated_at attributes
     and save() and to_dict() methods
 """
+
+from uuid import uuid4
+from datetime import datetime
+from models import storage
 
 
 class BaseModel:

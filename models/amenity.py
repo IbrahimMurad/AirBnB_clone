@@ -1,4 +1,3 @@
-from models.base_model import BaseModel
 """
 This module defines Amenity class to store an amenity informations
 
@@ -6,6 +5,8 @@ Classes :
     Amenity : inherits from BaseModel
     to store amenity informations
 """
+
+from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):

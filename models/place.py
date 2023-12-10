@@ -1,4 +1,3 @@
-from models.base_model import BaseModel
 """
 This module defines Place class to store the informations
 related to a place
@@ -7,6 +6,8 @@ Classes :
     Place : inherits from BaseModel
     to store the information related to a palce
 """
+
+from models.base_model import BaseModel
 
 
 class Place(BaseModel):
