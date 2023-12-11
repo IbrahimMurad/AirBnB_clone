@@ -2,8 +2,6 @@
 
 ## Overview
 This project is the first full web application in the ALX-SE journey of a web developer.
-
-## Features
 This project is divided into 7 steps:
 
 0. The Console :
@@ -37,8 +35,31 @@ This project is divided into 7 steps:
 6. Web Dynamic:
 	- updates are comming...
 
+
+## Features
+The console has severale commands, each serves in a particular way:
+1. create :
+	creates a new instance of a class passed as an argument.
+2. show :
+	displays an instance of a class by its id.
+3. all :
+	displays all the objects.
+4. destroy :
+	deletes an object by its class name and id.
+5. update :
+	updates an attribute of an instance (identifesd by its class name and id) with a new value.
 ## Usage
-To be updated...
+	For the console:
+	- all command		:	all [[class name]]				OR	[class_name].all()
+	- create command	:	create [class_name]				OR	[class_name].create()
+	- show command 		: 	show [class_name] [id]			OR	[class_name].show([id])
+	- destroy command	:	destroy [class_name] [id]		OR	[class_name].destroy([id])
+	- update command	:	update [class_name] [id] [attribute_name] [attribute_value]
+						OR	[class_name].update([id], [attribute_name], [attribute_value])
+	- quit command		:	quit
+	- EOF command		:	EOF
+	- help command		:	help [[command]]
+
 
 ## File Structure
 This repository contains (other than README.md file and AUTHOR file),
