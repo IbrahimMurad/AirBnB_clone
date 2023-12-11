@@ -15,6 +15,7 @@ class HBNBCommand(cmd.Cmd):
     that uses all the classes defined in AirBnB projects
     """
 
+    prompt = "(hbnb) "
     def preloop(self):
         """handles the non-interactive mode
         """
@@ -22,9 +23,6 @@ class HBNBCommand(cmd.Cmd):
         if not sys.stdin.isatty():
             command_with_args = " ".join(sys.argv[1:])
             self.cmdqueue.append(command_with_args)
-            self.prompt = ""
-        else:
-            self.prompt = "(hbnb) "
 
     def emptyline(self):
         """do nothing when an empty line is exuted"""
