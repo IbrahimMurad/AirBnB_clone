@@ -6,6 +6,7 @@ It can work interactively and non-interactively
 
 import cmd
 import sys
+import re
 from models import storage
 
 
@@ -60,6 +61,23 @@ Usage:
                 new_obj = my_obj_class()
                 new_obj.save()
                 print(new_obj.id)
+
+    def do_count(self, line):
+        """retrieve the number of instances of a class
+        Usage:
+            count [class_name]
+        """
+
+        my_args = line.split()
+        if my_args[0] not in storage.all_classes().keys():
+            print("** class doesn't exist **")
+        else:
+            count = 0
+            all_objects_list = list(storage.all().values())
+            for obj in all_objects_list:
+                if obj.__class__.__name__ == my_args[0]:
+                    count += 1
+            print(count)
 
     def do_show(self, line):
         """Prints the string representation of an instance \
@@ -173,6 +191,33 @@ Usage :
                     attr_type = type(getattr(my_obj, my_args[2]))
                     setattr(my_obj, my_args[2], attr_type(my_args[3]))
                 storage.save()
+
+    def default(self, line):
+        """Handles the unregular commands
+        """
+
+        if re.match(r'.+\..+\(.*\)', line) is None:
+            print("*** Unknown syntax: " + line)
+        elif re.match(r'.+\s.*', line) is not None:
+            cmd_exist = hasattr(self, line.split()[0])
+            if cmd_exist:
+                self.onecmd(line)
+            else:
+                print("*** Unknown syntax: " + line)
+        else:
+            splitted_line = re.split(r'[.()\s]', line)
+            to_remove = splitted_line.count('')
+            for i in range(to_remove):
+                splitted_line.remove('')
+            if len(splitted_line) == 1:
+                print("*** Unknown syntax: " + line)
+            elif not hasattr(self, "do_" + splitted_line[1]):
+                print("*** Unknown syntax: " + line)
+            else:
+                my_cmd = splitted_line.pop(1)
+                splitted_line.insert(0, my_cmd)
+                new_line = " ".join(splitted_line)
+                self.onecmd(new_line)
 
 
 if __name__ == '__main__':
