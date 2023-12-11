@@ -50,16 +50,15 @@ deletes an object by its class name and id.
 updates an attribute of an instance (identifesd by its class name and id) with a new value.
 ## Usage
 For the console:
-	- all command		:	all [[class name]]				OR	[class_name].all()
-	- create command	:	create [class_name]				OR	[class_name].create()
-	- show command 		: 	show [class_name] [id]			OR	[class_name].show([id])
-	- destroy command	:	destroy [class_name] [id]		OR	[class_name].destroy([id])
-	- update command	:	update [class_name] [id] [attribute_name] [attribute_value]
-						OR	[class_name].update([id], [attribute_name], [attribute_value])
-	- quit command		:	quit
-	- EOF command		:	EOF
-	- help command		:	help [[command]]
-
+- all command		:	all [[class name]]				OR	[class_name].all()
+- create command	:	create [class_name]				OR	[class_name].create()
+- show command 		: 	show [class_name] [id]			OR	[class_name].show([id])
+- destroy command	:	destroy [class_name] [id]		OR	[class_name].destroy([id])
+- update command	:	update [class_name] [id] [attribute_name] [attribute_value]
+					OR	[class_name].update([id], [attribute_name], [attribute_value])
+- quit command		:	quit
+- EOF command		:	EOF
+- help command		:	help [[command]]
 
 ## File Structure
 This repository contains (other than README.md file and AUTHOR file),
