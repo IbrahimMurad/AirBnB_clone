@@ -198,7 +198,7 @@ Usage :
 
         if re.match(r'.+\..+\(.*\)', line) is None:
             print("*** Unknown syntax: " + line)
-        elif re.match(r'.+\s.*', line) is not None:
+        elif re.match(r'[a-z]+\s.*', line) is not None:
             cmd_exist = hasattr(self, line.split()[0])
             if cmd_exist:
                 self.onecmd(line)
