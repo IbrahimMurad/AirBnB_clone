@@ -205,7 +205,7 @@ Usage :
             else:
                 print("*** Unknown syntax: " + line)
         else:
-            splitted_line = re.split(r'[.()\s]', line)
+            splitted_line = re.split(r'[.(),\s]', line)
             to_remove = splitted_line.count('')
             for i in range(to_remove):
                 splitted_line.remove('')
