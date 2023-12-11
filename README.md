@@ -39,17 +39,17 @@ This project is divided into 7 steps:
 ## Features
 The console has severale commands, each serves in a particular way:
 1. create :
-	creates a new instance of a class passed as an argument.
+creates a new instance of a class passed as an argument.
 2. show :
-	displays an instance of a class by its id.
+displays an instance of a class by its id.
 3. all :
-	displays all the objects.
+displays all the objects.
 4. destroy :
-	deletes an object by its class name and id.
+deletes an object by its class name and id.
 5. update :
-	updates an attribute of an instance (identifesd by its class name and id) with a new value.
+updates an attribute of an instance (identifesd by its class name and id) with a new value.
 ## Usage
-	For the console:
+For the console:
 	- all command		:	all [[class name]]				OR	[class_name].all()
 	- create command	:	create [class_name]				OR	[class_name].create()
 	- show command 		: 	show [class_name] [id]			OR	[class_name].show([id])
