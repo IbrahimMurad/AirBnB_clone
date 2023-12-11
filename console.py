@@ -16,6 +16,7 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
+
     def preloop(self):
         """handles the non-interactive mode
         """
