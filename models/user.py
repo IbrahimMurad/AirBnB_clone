@@ -21,25 +21,7 @@ class User(BaseModel):
         password (string): the passowrd of the user
     """
 
-    def __init__(self, *args, **kwargs):
-        """
-        Initializes all the attributes,
-        the local and the inherited from BaseModel
-        """
-
-        if len(kwargs) == 0:
-            self.first_name = ""
-            self.last_name = ""
-            self.email = ""
-            self.password = ""
-            super().__init__()
-        else:
-            super().__init__(**kwargs)
-            if 'first_name' not in kwargs.keys():
-                self.first_name = ""
-            if 'last_name' not in kwargs.keys():
-                self.last_name = ""
-            if 'email' not in kwargs.keys():
-                self.email = ""
-            if 'password' not in kwargs.keys():
-                self.password = ""
+    first_name = ""
+    last_name = ""
+    email = ""
+    password = ""
