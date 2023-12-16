@@ -4,9 +4,12 @@ header {
 	border-bottom: 1px solid #CCCCCC;
 }
 
-div {
+.logo {
 	height: 60px;
 	width: 142px;
 	margin-left: 20px;
+	float: left;
 	background-image: url("../images/logo.png");
+	background-position: 0 100%;
+	background-repeat: no-repeat;
 }
