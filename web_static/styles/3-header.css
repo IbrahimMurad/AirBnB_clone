@@ -1,0 +1,12 @@
+header {
+	height: 70px;
+	width: 100%;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+div {
+	height: 60px;
+	width: 142px;
+	margin-left: 20px;
+	background-image: url("../images/logo.png");
+}
