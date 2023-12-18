@@ -76,10 +76,11 @@ h4 {
 	visibility: hidden;
 	opacity: 0;
 	box-sizing: border-box;
-	padding-left: 30px;
+	padding: 30px;
 	background-color: #FAFAFA;
 	width: 100%;
 	border: 1px solid #DDDDDD;
+	z-index: 1;
 }
 
 ul {
