@@ -7,7 +7,7 @@ to all the objects created before
 
 Classes :
     FileStorage : a class that serializes instances to a JSON file
-    and deserializes JSON file to instances.
+    and deserializes JSON file to instances .
 """
 
 import json
